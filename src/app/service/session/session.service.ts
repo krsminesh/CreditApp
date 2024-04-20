@@ -15,4 +15,12 @@ export class SessionService {
   setLoginUserType(ttValue:string){
     sessionStorage.setItem(GlobalConstants.userType, ttValue)
   }
+
+  getCurrentSession(){
+    return sessionStorage.getItem(GlobalConstants.userSession)
+  }
+
+  clearLoginSession(){
+    sessionStorage.clear();
+  }
 }

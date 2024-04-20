@@ -13,7 +13,8 @@
         </li>
       </ul>
       <div>
-        <a href="javascript:;" [routerLink]="loginUrl" class="btn btn-success">Login</a>
+        <a href="javascript:;" *ngIf="!isLoggedIn" [routerLink]="loginUrl" class="btn btn-success">Login</a>
+        <a href="javascript:;" *ngIf="isLoggedIn" (click)="logoutUser()" class="btn btn-warning">Logout</a>
       </div>
     </div>
   </nav>
