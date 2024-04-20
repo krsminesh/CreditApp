@@ -12,6 +12,7 @@ import { FooterComponent } from './common/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageTitleDirective } from './directives/page-title/page-title.directive';
 import { HttpClientModule } from '@angular/common/http';
+import { ViewCreditDetailsComponent } from './user/view-credit-details/view-credit-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     HeaderComponent,
     FooterComponent,
-    PageTitleDirective
+    PageTitleDirective,
+    ViewCreditDetailsComponent
   ],
   imports: [
     BrowserModule,
