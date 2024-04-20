@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { GlobalConstants } from 'src/app/global/globalConstants';
 
 @Injectable({
   providedIn: 'root'
@@ -6,4 +7,12 @@ import { Injectable } from '@angular/core';
 export class SessionService {
 
   constructor() { }
+
+  
+  setLoginUserSession(ssValue:string){
+    sessionStorage.setItem(GlobalConstants.userSession, ssValue)
+  }
+  setLoginUserType(ttValue:string){
+    sessionStorage.setItem(GlobalConstants.userType, ttValue)
+  }
 }

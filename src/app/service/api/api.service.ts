@@ -23,4 +23,10 @@ export class ApiService {
   applyCreditAPI(request : any){
     return this.postApi(GlobalConstants.applyCreditAPILink, request);
   }
+
+  loginAccoutAPI(loginname:string, pswd:string){
+    let apiURL = GlobalConstants.userLoginAPILink+'?loginName='+loginname+'&password='+pswd;
+    console.log(apiURL);
+    return this.getApi(apiURL);
+  }
 }

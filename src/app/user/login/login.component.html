@@ -1,4 +1,7 @@
 <div class="login-form">
+    <div class="badge badge-warning px-3 py-3 d-block mb-4" *ngIf="loginErrorMessage!=''">
+        {{loginErrorMessage}}
+    </div>
     <div class="row">
         <div class="col">
             <div class="jumbotron jumbotron-fluid px-4 py-4">
@@ -10,6 +13,7 @@
             </div>
         </div>
         <div class="col">
+            
             <div class="card">
                 <form [formGroup]="userLoginFormReactive" (ngSubmit)="loginAccount()">
                     <div class="row">
@@ -27,7 +31,7 @@
                     <div class="row mt-4">
                         <div class="col-3"></div>
                         <div class="col-9 d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary" tooltip="Enter Username and Password to login">Login</button>
+                            <button type="submit" class="btn btn-primary" tooltip="Enter Username and Password to login">Login</button>
                         </div>
                     </div>
                 </form>
