@@ -1,1 +1,37 @@
-<p>login works!</p>
+<div class="login-form">
+    <div class="row">
+        <div class="col">
+            <div class="jumbotron jumbotron-fluid px-4 py-4">
+                <h2>Login to your Account on Credit Cards!</h2>
+                <p class="lead">
+                    <span class="font-italic fs-3">What is Lorem Ipsum?</span><br/>
+                    Lorem Ipsum is simply dummy the 1960s with the release ng software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card">
+                <form [formGroup]="userLoginFormReactive" (ngSubmit)="loginAccount()">
+                    <div class="row">
+                        <div class="col-3">User Name:</div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" formControlName="userName"/>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3">Password:</div>
+                        <div class="col-9">
+                            <input type="password" class="form-control" formControlName="password"/>
+                        </div>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-3"></div>
+                        <div class="col-9 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" tooltip="Enter Username and Password to login">Login</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
