@@ -1,4 +1,4 @@
-import { Component, OnChanges, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/global/globalConstants';
 import { SessionService } from 'src/app/service/session/session.service';
@@ -8,7 +8,7 @@ import { SessionService } from 'src/app/service/session/session.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
-export class HeaderComponent implements OnInit, OnChanges{
+export class HeaderComponent implements OnInit{
   loginUrl = GlobalConstants.loginUrl
   isLoggedIn:boolean = false;
 
@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit, OnChanges{
       this.checkLogin();
   }
 
-  ngOnChanges(){
-
+  ngAfterContentChecked(){
+    this.checkLogin();
   }
 
   checkLogin(){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GlobalConstants } from 'src/app/global/globalConstants';
 import { ApiService } from 'src/app/service/api/api.service';
@@ -27,6 +27,10 @@ export class LoginComponent {
     this.userLoginFormReactive = this.formBuilder.group({
       userName: ['', Validators.required],
       password: ['', Validators.required]
+    });
+    this.userLoginFormReactive.patchValue({
+      userName: "Bern De Robertis",
+      password: "Rafting"
     });
   }
   clearFormFields() {
