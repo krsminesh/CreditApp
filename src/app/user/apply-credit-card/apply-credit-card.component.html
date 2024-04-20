@@ -1,0 +1,45 @@
+<div class="apply-credit-card">
+    <h2 appPageTitle class="d-flex align-items-center justify-content-between">Apply Credit Card!! <span class="info-text">styles added using directive</span></h2>
+    <form [formGroup]="applyCreditFormReactive" (ngSubmit) = "submitApplyCredit()">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-6 mx-auto">
+                    <label class="d-flex mb-4">
+                        <span class="font-weight-bold">
+                            Full Name:
+                        </span>
+                        <input type="text" class="form-control" formControlName="fullName"/>
+                        <span class="d-block badge badge-danger err-msg" *ngIf="applyCreditFormReactive.get('fullName')?.touched">Please enter value</span>
+                    </label>
+                    <label class="d-flex mb-4">
+                        <span class="font-weight-bold">
+                            Full Address:
+                        </span>
+                        <textarea class="form-control" formControlName="fullAddress"></textarea>
+                        <span class="d-block badge badge-danger err-msg" *ngIf="applyCreditFormReactive.get('fullAddress')?.touched">Please enter value</span>
+                    </label>
+                    <label class="d-flex mb-4">
+                        <span class="font-weight-bold">
+                            Credit Score:
+                        </span>
+                        <input type="text" class="form-control" formControlName="creditScore"/>
+                        <span class="d-block badge badge-danger err-msg" *ngIf="applyCreditFormReactive.get('creditScore')?.touched">Please enter value</span>
+                    </label>
+                    <label class="d-flex mb-4">
+                        <span class="font-weight-bold">
+                            Annual Income:
+                        </span>
+                        <input type="text" class="form-control" formControlName="annualIncome"/> <span>&nbsp; &nbsp; in LPA</span>
+                        <span class="d-block badge badge-danger err-msg" *ngIf="applyCreditFormReactive.get('annualIncome')?.touched">Please enter value</span>
+                    </label>
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-primary" type="submit">
+                            Apply Credit Card!
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </form>
+</div>

@@ -1,0 +1,17 @@
+h2{
+    color:#fff;
+    .info-text{
+        font-size: 12px;
+        font-weight: lighter;
+    }
+}
+.form-group{
+    label{
+        display: flex;
+        align-items: center;
+        > span{
+            flex:0 0 150px;
+            max-width: 150px;
+        }
+    }
+}
