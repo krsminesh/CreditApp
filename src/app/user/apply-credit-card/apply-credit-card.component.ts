@@ -15,6 +15,7 @@ export class ApplyCreditCardComponent implements OnInit{
   fullName:string =''
   homeLink = GlobalConstants.welcomeUrl;
   genTrackIdNumber:number=0;
+  checkStatusURL = GlobalConstants.checkStatusURL;
 
   applyCreditFormReactive!: FormGroup;
 

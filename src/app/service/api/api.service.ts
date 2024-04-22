@@ -29,4 +29,8 @@ export class ApiService {
     console.log(apiURL);
     return this.getApi(apiURL);
   }
+
+  checkStatusAPI(){
+    return this.getApi(GlobalConstants.applyCreditAPILink);
+  }
 }

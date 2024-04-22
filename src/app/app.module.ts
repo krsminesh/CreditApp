@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PageTitleDirective } from './directives/page-title/page-title.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewCreditDetailsComponent } from './user/view-credit-details/view-credit-details.component';
+import { CheckStatusComponent } from './user/check-status/check-status.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { ViewCreditDetailsComponent } from './user/view-credit-details/view-cred
     HeaderComponent,
     FooterComponent,
     PageTitleDirective,
-    ViewCreditDetailsComponent
+    ViewCreditDetailsComponent,
+    CheckStatusComponent
   ],
   imports: [
     BrowserModule,

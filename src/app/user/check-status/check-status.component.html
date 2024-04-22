@@ -1,0 +1,45 @@
+<div class="check-status">
+    <ng-container *ngIf="!showResult">
+        <div class="row">
+            <div class="col-6 mx-auto">
+                <form [formGroup]="checkStatusFormReactive" (ngSubmit)="checkStatus()">
+                    <div class="row">
+                        <div class="col-3">Tracking Id:</div>
+                        <div class="col-9">
+                            <input type="text" class="form-control" formControlName="trackingId" value="9797143196626252"/>
+                        </div>
+                    </div>
+                    
+                    <div class="row mt-4">
+                        <div class="col-3"></div>
+                        <div class="col-9 d-flex justify-content-end">
+                            <button type="submit" class="btn btn-primary" tooltip="Enter your Tracking Id to check">Check Status</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="showResult">
+        <div class="bg-light mb-40 px-4 py-4">
+            <span class="d-flex align-items-center justify-content-center">Your application status of <b>{{trackingIdValue}}</b> &nbsp; is : 
+                <span class="badge d-inline-flex mx-2"                    
+                    [ngClass]="{
+                        'badge-success':userTrackStatus,
+                        'badge-danger': !userTrackStatus
+                    }"
+                >
+                    {{userTrackStatus}}
+                </span>
+                <span *ngIf="userTrackStatus == null || userTrackStatus == undefined">
+                    {{errCaseText}}
+                </span>
+                
+            </span>
+            <div class="col-4 mx-auto mt-4 bg-dark px-4 py-4 d-flex justify-content-center">
+                <a href="javascript:;" [routerLink]="welcomeUrl" class="btn btn-success mx-2" *ngIf="!userTrackStatus">Goto Home</a>
+                <a href="javascript:;" [routerLink]="loginUrl" class="btn btn-success mx-2" *ngIf="userTrackStatus">Login</a>
+            </div>
+        </div>
+    </ng-container>
+</div>

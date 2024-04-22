@@ -10,5 +10,6 @@ export class WelcomeComponent {
 
   loginUrl = GlobalConstants.loginUrl;
   applyUrl = GlobalConstants.applyUrl;
+  checkStatusURL = GlobalConstants.checkStatusURL;
 
 }

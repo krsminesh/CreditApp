@@ -1,8 +1,9 @@
 export class GlobalConstants{
-    static welcomeUrl ="/welcome";
+    static welcomeUrl ='/welcome';
     static loginUrl = '/login';
     static applyUrl = '/apply-credit';
     static viewCreditDetails = '/view-credit-details';
+    static checkStatusURL ='/check-status';
 
     static userSession = "CurrentLoginUser"
     static userType = "isAdmin"
