@@ -1,1 +1,43 @@
-<p>view-credit-details works!</p>
+<div class="view-credit-details">
+    <ng-container *ngIf="isAdmin">
+        <h2>Welcome Admin!</h2>
+        <div class="mt-4 table-responsive mb-100">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Full Name</th>
+                        <th>Address</th>
+                        <th>Annual Income</th>
+                        <th>Credit Score</th>
+                        <th>Tracking ID</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let application of applications">
+                        <td>{{application.FullName}}</td>
+                        <td>{{application.Address}}</td>
+                        <td>{{application.AnnualIncome}}</td>
+                        <td>{{application.CreditScore}}</td>
+                        <td>{{application.trackingId}}</td>
+                        <td>
+                            <ng-container *ngIf="application.Status">
+                                Approved
+                            </ng-container> 
+                            <ng-container *ngIf="!application.Status">
+                                Pending
+                            </ng-container>  
+                        </td>
+                        <td class="btn-small">
+                            <ng-container *ngIf="!application.Status">
+                                <button class="btn btn-success" tooltip="Approve Request" (click)="approveRequest()">Approve</button>
+                                <button class="btn btn-danger" tooltip="Reject Request" (click)="rejectRequest()">Reject</button>
+                            </ng-container>                            
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </ng-container>
+</div>

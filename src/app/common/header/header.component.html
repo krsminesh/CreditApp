@@ -15,7 +15,11 @@
       </ul>
       <div>
         <a href="javascript:;" *ngIf="!isLoggedIn" [routerLink]="loginUrl" class="btn btn-success">Login</a>
-        <a href="javascript:;" *ngIf="isLoggedIn" (click)="logoutUser()" class="btn btn-warning">Logout</a>
+        <span *ngIf="isLoggedIn" class="d-inline-flex align-items-center">
+          <span class="mx-3">Welcome: {{displayUserName}}</span>
+          <a href="javascript:;" (click)="logoutUser()" class="btn btn-warning">Logout</a>
+        </span>
+        
       </div>
     </div>
   </nav>

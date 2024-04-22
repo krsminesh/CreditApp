@@ -29,8 +29,8 @@ export class LoginComponent {
       password: ['', Validators.required]
     });
     this.userLoginFormReactive.patchValue({
-      userName: "Bern De Robertis",
-      password: "Rafting"
+      userName: "Admin",
+      password: "Welcome123"
     });
   }
   clearFormFields() {

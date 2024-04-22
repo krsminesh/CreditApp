@@ -11,6 +11,7 @@ import { SessionService } from 'src/app/service/session/session.service';
 export class HeaderComponent implements OnInit{
   loginUrl = GlobalConstants.loginUrl
   isLoggedIn:boolean = false;
+  displayUserName:any ='';
 
   constructor(
     private Sessionservice:SessionService,
@@ -27,6 +28,7 @@ export class HeaderComponent implements OnInit{
 
   checkLogin(){
     if(this.Sessionservice.getCurrentSession()){
+      this.displayUserName = this.Sessionservice.getCurrentSession();
       this.isLoggedIn = true; 
     }
   }

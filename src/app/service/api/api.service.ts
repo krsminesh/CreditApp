@@ -33,4 +33,8 @@ export class ApiService {
   checkStatusAPI(){
     return this.getApi(GlobalConstants.applyCreditAPILink);
   }
+
+  getAllApplication(){
+    return this.getApi(GlobalConstants.applyCreditAPILink);
+  }
 }
