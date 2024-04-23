@@ -29,7 +29,12 @@
                         'badge-danger': !userTrackStatus
                     }"
                 >
-                    {{userTrackStatus}}
+                    <ng-container *ngIf="userTrackStatus">
+                        Your application for Credit card is processed. Please login to view your details
+                    </ng-container>
+                    <ng-container *ngIf="!userTrackStatus">
+                        Your application for Credit card is processing. Please wait until we review your details
+                    </ng-container>
                 </span>
                 <span *ngIf="userTrackStatus == null || userTrackStatus == undefined">
                     {{errCaseText}}

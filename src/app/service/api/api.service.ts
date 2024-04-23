@@ -19,6 +19,13 @@ export class ApiService {
     return this.httpClient.post(apiUrl, request);
   }
 
+  deleteAPI(apiUrl:string, request:any){
+    return this.httpClient.delete(apiUrl, request);
+  }
+
+  putApi(apiUrl:string, request:any){
+    return this.httpClient.put(apiUrl, request);
+  }
 
   applyCreditAPI(request : any){
     return this.postApi(GlobalConstants.applyCreditAPILink, request);
@@ -36,5 +43,15 @@ export class ApiService {
 
   getAllApplication(){
     return this.getApi(GlobalConstants.applyCreditAPILink);
+  }
+
+  approveAPI(dataRow:any, dataChangeId:any){
+    console.log(dataChangeId +' --- '+dataRow)
+    return this.putApi(GlobalConstants.applyCreditAPILink+'/'+dataChangeId, dataRow);
+  }
+
+  rejectAPI(dataRow:any, dataChangeId:any){
+    console.log(dataChangeId +' --- '+dataRow)
+    return this.putApi(GlobalConstants.applyCreditAPILink+'/'+dataChangeId, dataRow);
   }
 }

@@ -11,7 +11,8 @@
                         <th>Credit Score</th>
                         <th>Tracking ID</th>
                         <th>Status</th>
-                        <th>Actions</th>
+                        <th width="12%">Actions</th>
+                        <th>Rejected Reason</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -28,12 +29,24 @@
                             <ng-container *ngIf="!application.Status">
                                 Pending
                             </ng-container>  
+                            <ng-container *ngIf="application.RejectedReason">
+                                Rejected
+                            </ng-container>
                         </td>
-                        <td class="btn-small">
-                            <ng-container *ngIf="!application.Status">
-                                <button class="btn btn-success" tooltip="Approve Request" (click)="approveRequest()">Approve</button>
-                                <button class="btn btn-danger" tooltip="Reject Request" (click)="rejectRequest()">Reject</button>
-                            </ng-container>                            
+                        <td class="btn-small text-center">
+                            <ng-container *ngIf="!application.Status && !application.RejectedReason">
+                                <button class="btn btn-success" tooltip="Approve Request" (click)="approveRequest(application)">Approve</button>
+                                <button class="btn btn-danger" tooltip="Reject Request" (click)="rejectRequest(application)">Reject</button>
+                            </ng-container>   
+                            
+                            <ng-container *ngIf="application.RejectedReason">
+                                <button class="btn btn-danger" tooltip="Delete Request" (click)="deleteRequest(application)">Delete Request</button>
+                            </ng-container>
+                        </td>
+                        <td>
+                            <ng-container *ngIf="application.RejectedReason">
+                                {{application.RejectedReason}}
+                            </ng-container>
                         </td>
                     </tr>
                 </tbody>
@@ -41,3 +54,23 @@
         </div>
     </ng-container>
 </div>
+<ng-container *ngIf="showRejectReason">
+    <ng-container *ngTemplateOutlet="rejectReasonPopup"></ng-container>
+</ng-container>
+
+<ng-template #rejectReasonPopup>
+    <div class="modal-wrap">
+        <div class="modal-head">
+            <h3>Resaon for Rejection for: {{itemTitleName}} - id: {{itemIdNumber}}</h3>
+        </div>
+        <div class="modal-body">
+            
+            <textarea class="form-control" ng-model="itemReasonReject"></textarea>
+        </div>
+        <div class="modal-foot">
+            <button (click)="showRejectReason = false" class="btn btn-teritary d-inline-flex mx-2">Cancel</button>
+            <button (click)="saveRejectReason()" class="btn btn-primary d-inline-flex mx-2">Save Reason</button>
+        </div>
+    </div>
+    <div class="overlay-backdrop"></div>
+</ng-template>

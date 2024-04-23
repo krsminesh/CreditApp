@@ -14,6 +14,7 @@ import { PageTitleDirective } from './directives/page-title/page-title.directive
 import { HttpClientModule } from '@angular/common/http';
 import { ViewCreditDetailsComponent } from './user/view-credit-details/view-credit-details.component';
 import { CheckStatusComponent } from './user/check-status/check-status.component';
+import { LogoutComponent } from './user/logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { CheckStatusComponent } from './user/check-status/check-status.component
     FooterComponent,
     PageTitleDirective,
     ViewCreditDetailsComponent,
-    CheckStatusComponent
+    CheckStatusComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

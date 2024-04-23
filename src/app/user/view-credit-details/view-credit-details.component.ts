@@ -12,6 +12,10 @@ import { SessionService } from 'src/app/service/session/session.service';
 export class ViewCreditDetailsComponent implements OnInit{
   isAdmin:boolean = true;
   applications:any;
+  showRejectReason: boolean = false;
+  itemReasonReject:string ='';
+  itemTitleName: any;
+  itemIdNumber: any;
 
   constructor(
     private SessionService : SessionService,
@@ -20,6 +24,10 @@ export class ViewCreditDetailsComponent implements OnInit{
   ){}
 
   ngOnInit(){
+    this.fetchCreditApplyData();
+  }
+
+  fetchCreditApplyData(){
     if(this.SessionService.getCurrentSession()){
       this.ApiService.getAllApplication().subscribe(
         (response) =>{
@@ -32,12 +40,57 @@ export class ViewCreditDetailsComponent implements OnInit{
       this.router.navigate([GlobalConstants.welcomeUrl])
     }
   }
-
-  approveRequest(){
+  approveRequest(itemRow : any){
+    
+    itemRow={
+      "id": (itemRow.id),
+      "Status": !itemRow.Status,
+      "Address": itemRow.Address,
+      "FullName": itemRow.FullName,
+      "trackingId": itemRow.trackingId,
+      "CreditScore": itemRow.CreditScore,
+      "AnnualIncome": itemRow.AnnualIncome
+    }
+    
+    this.ApiService.approveAPI(itemRow, itemRow.id).subscribe(
+      (data)=>{
+        this.fetchCreditApplyData();
+      },
+      (err)=>{
+        alert("err approve")
+      }
+    );
+  }
+  deleteRequest(itemRow : any){
 
   }
-  
-  rejectRequest(){
+
+  saveRejectReason(){
+    this.showRejectReason = false;
+  }
+
+  rejectRequest(itemRow : any){
+    this.showRejectReason = true;
+    this.itemTitleName = itemRow.FullName;
+    this.itemIdNumber = itemRow.id;
+    // itemRow={
+    //   "id": (itemRow.id),
+    //   "Status": false,
+    //   "Address": itemRow.Address,
+    //   "FullName": itemRow.FullName,
+    //   "trackingId": itemRow.trackingId,
+    //   "CreditScore": itemRow.CreditScore,
+    //   "AnnualIncome": itemRow.AnnualIncome,
+    //   "RejectedReason": 'adsadasdsad asdas dasd asdasd asdas '
+    // }
     
+    // this.ApiService.rejectAPI(itemRow, itemRow.id).subscribe(
+    //   (data)=>{
+    //     this.fetchCreditApplyData();
+    //   },
+    //   (err)=>{
+    //     alert("err approve")
+    //   }
+    // );
   }
 }
