@@ -1,5 +1,5 @@
 <div class="view-credit-details">
-    <ng-container *ngIf="isAdmin">
+    <ng-container *ngIf="isAdminPage">
         <h2>Welcome Admin!</h2>
         <div class="mt-4 table-responsive mb-100">
             <table class="table">
@@ -52,6 +52,11 @@
                 </tbody>
             </table>
         </div>
+    </ng-container>
+
+    <ng-container *ngIf="!isAdminPage">
+
+        Welcome to your transaction page
     </ng-container>
 </div>
 <ng-container *ngIf="showRejectReason">

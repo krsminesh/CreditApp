@@ -10,7 +10,7 @@ import { SessionService } from 'src/app/service/session/session.service';
   styleUrls: ['./view-credit-details.component.scss']
 })
 export class ViewCreditDetailsComponent implements OnInit{
-  isAdmin:boolean = true;
+  isAdminPage:boolean = false;
   applications:any;
   showRejectReason: boolean = false;
   itemFieldReasonReject:string ='';
@@ -28,6 +28,9 @@ export class ViewCreditDetailsComponent implements OnInit{
 
   ngOnInit(){
     this.fetchCreditApplyData();
+    if(this.SessionService.getLoginUserType() == "true"){
+      this.isAdminPage = true;
+    }
   }
 
   fetchCreditApplyData(){
@@ -57,8 +60,8 @@ export class ViewCreditDetailsComponent implements OnInit{
     
     this.ApiService.approveAPI(itemRow, itemRow.id).subscribe(
       (data:any)=>{
-        //this.fetchCreditApplyData();
-        //this.showRejectReason = false;
+        this.fetchCreditApplyData();
+        this.showRejectReason = false;
         debugger;
         console.log("approve item data:",data.FullName)
         let newLoginItem = {

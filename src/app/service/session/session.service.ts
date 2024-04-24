@@ -16,6 +16,10 @@ export class SessionService {
     sessionStorage.setItem(GlobalConstants.userType, ttValue)
   }
 
+  getLoginUserType(){
+    return sessionStorage.getItem(GlobalConstants.userType)
+  }
+
   getCurrentSession(){
     return sessionStorage.getItem(GlobalConstants.userSession)
   }
