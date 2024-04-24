@@ -56,16 +56,21 @@ export class ViewCreditDetailsComponent implements OnInit{
     }
     
     this.ApiService.approveAPI(itemRow, itemRow.id).subscribe(
-      (data)=>{
+      (data:any)=>{
         //this.fetchCreditApplyData();
         //this.showRejectReason = false;
         debugger;
-        console.log("approve item data:",data)
-        // this.ApiService.addNewLoginAccount().subscribe(
-        //   (Response) =>{
-        //     alert("upon approval, the user is added to the login users list - by this the user can login with the default password = 'Welcome123'")
-        //   }
-        // )
+        console.log("approve item data:",data.FullName)
+        let newLoginItem = {
+          "isAdmin": false,
+          "password": "Welcome123",
+          "loginName": data.FullName
+        }
+        this.ApiService.addNewLoginAccount(newLoginItem).subscribe(
+          (Response) =>{
+            alert("upon approval, the user is added to the login users list - by this the user can login with the default password = 'Welcome123'")
+          }
+        )
       },
       (err)=>{
         alert("err approve")

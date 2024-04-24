@@ -37,7 +37,7 @@ export class ApiService {
     return this.getApi(apiURL);
   }
   addNewLoginAccount(newLoginData:any){
-     this.postApi(GlobalConstants.userLoginAPILink, newLoginData)
+     return this.postApi(GlobalConstants.userLoginAPILink, newLoginData)
   }
   checkStatusAPI(){
     return this.getApi(GlobalConstants.applyCreditAPILink);
