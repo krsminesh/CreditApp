@@ -1,0 +1,38 @@
+Button / Radio / Textfield
+
+it('should contain the type input', () => {
+	component.type = ButtonType.Primary;
+	expect(component.buttonType).toEqual(ButtonType.Primary);
+});
+
+it('should contain the state input', () => {
+	component.state = ButtonState.Enabled;
+	expect(component.buttonState).toEqual(ButtonState.Enabled);
+	component.state = ButtonState.Active;
+	expect(component.buttonState).toEqual('active');
+});
+
+it('should contain the customCSSClass input', () => {
+  component.customCSSClass = 'my-custom-class';
+  expect(component.customClass).toEqual(`my-custom-class`);
+});
+
+
+it('should contain disabled input', () => {
+  component.disabled = true;
+  expect(component.isDisabled).toBeTruthy();
+});
+it('should contain required input', () => {
+  component.required = true;
+  expect(component.required).toBeTruthy();
+});
+
+it('should contain optional input', () => {
+    component.optional = true;
+    expect(component.optional).toBeTruthy();
+  });
+
+it('should contain maxLength input', () => {
+    component.maxLength = 1000;
+    expect(component.maxLength).toEqual(1000);
+  });
