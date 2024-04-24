@@ -36,7 +36,9 @@ export class ApiService {
     console.log(apiURL);
     return this.getApi(apiURL);
   }
-
+  addNewLoginAccount(newLoginData:any){
+     this.postApi(GlobalConstants.userLoginAPILink, newLoginData)
+  }
   checkStatusAPI(){
     return this.getApi(GlobalConstants.applyCreditAPILink);
   }
@@ -46,7 +48,7 @@ export class ApiService {
   }
 
   approveAPI(dataRow:any, dataChangeId:any){
-    console.log(dataChangeId +' --- '+dataRow)
+    console.log(dataChangeId +' from api service file--- '+dataRow)
     return this.putApi(GlobalConstants.applyCreditAPILink+'/'+dataChangeId, dataRow);
   }
 

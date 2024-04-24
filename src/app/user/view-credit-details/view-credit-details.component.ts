@@ -13,9 +13,12 @@ export class ViewCreditDetailsComponent implements OnInit{
   isAdmin:boolean = true;
   applications:any;
   showRejectReason: boolean = false;
-  itemReasonReject:string ='';
+  itemFieldReasonReject:string ='';
   itemTitleName: any;
   itemIdNumber: any;
+  itemReasonReject: string ="";
+
+  itemRowGlobal:any;
 
   constructor(
     private SessionService : SessionService,
@@ -54,7 +57,15 @@ export class ViewCreditDetailsComponent implements OnInit{
     
     this.ApiService.approveAPI(itemRow, itemRow.id).subscribe(
       (data)=>{
-        this.fetchCreditApplyData();
+        //this.fetchCreditApplyData();
+        //this.showRejectReason = false;
+        debugger;
+        console.log("approve item data:",data)
+        // this.ApiService.addNewLoginAccount().subscribe(
+        //   (Response) =>{
+        //     alert("upon approval, the user is added to the login users list - by this the user can login with the default password = 'Welcome123'")
+        //   }
+        // )
       },
       (err)=>{
         alert("err approve")
@@ -66,31 +77,38 @@ export class ViewCreditDetailsComponent implements OnInit{
   }
 
   saveRejectReason(){
-    this.showRejectReason = false;
+    this.itemFieldReasonReject = this.itemReasonReject
+    this.rejectRequestWithReason(this.itemFieldReasonReject)
+  }
+
+  rejectRequestWithReason(rReason:string){
+    //alert(this.itemReasonReject)
+    this.itemRowGlobal={
+      "id": (this.itemRowGlobal.id),
+      "Status": false,
+      "Address": this.itemRowGlobal.Address,
+      "FullName": this.itemRowGlobal.FullName,
+      "trackingId": this.itemRowGlobal.trackingId,
+      "CreditScore": this.itemRowGlobal.CreditScore,
+      "AnnualIncome": this.itemRowGlobal.AnnualIncome,
+      "RejectedReason": rReason
+    }
+    console.log(this.itemRowGlobal);
+    this.ApiService.rejectAPI(this.itemRowGlobal, this.itemRowGlobal.id).subscribe(
+      (data)=>{
+        this.fetchCreditApplyData();
+      },
+      (err)=>{
+        alert("err approve")
+      }
+    );
   }
 
   rejectRequest(itemRow : any){
     this.showRejectReason = true;
     this.itemTitleName = itemRow.FullName;
     this.itemIdNumber = itemRow.id;
-    // itemRow={
-    //   "id": (itemRow.id),
-    //   "Status": false,
-    //   "Address": itemRow.Address,
-    //   "FullName": itemRow.FullName,
-    //   "trackingId": itemRow.trackingId,
-    //   "CreditScore": itemRow.CreditScore,
-    //   "AnnualIncome": itemRow.AnnualIncome,
-    //   "RejectedReason": 'adsadasdsad asdas dasd asdasd asdas '
-    // }
+    this.itemRowGlobal = itemRow;
     
-    // this.ApiService.rejectAPI(itemRow, itemRow.id).subscribe(
-    //   (data)=>{
-    //     this.fetchCreditApplyData();
-    //   },
-    //   (err)=>{
-    //     alert("err approve")
-    //   }
-    // );
   }
 }

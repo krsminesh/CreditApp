@@ -25,13 +25,13 @@ export class LoginComponent {
   }
   ngOnInit() {
     this.userLoginFormReactive = this.formBuilder.group({
-      userName: ['', Validators.required],
-      password: ['', Validators.required]
+      userName: ['Admin', Validators.required],
+      password: ['Welcome123', Validators.required]
     });
-    this.userLoginFormReactive.patchValue({
-      userName: "Admin",
-      password: "Welcome123"
-    });
+    // this.userLoginFormReactive.patchValue({
+    //   userName: "Admin",
+    //   password: "Welcome123"
+    // });
   }
   clearFormFields() {
     this.userLoginFormReactive.reset();

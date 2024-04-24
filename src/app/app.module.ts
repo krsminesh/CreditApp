@@ -9,7 +9,7 @@ import { WelcomeComponent } from './user/welcome/welcome.component';
 import { LoginComponent } from './user/login/login.component';
 import { HeaderComponent } from './common/header/header.component';
 import { FooterComponent } from './common/footer/footer.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PageTitleDirective } from './directives/page-title/page-title.directive';
 import { HttpClientModule } from '@angular/common/http';
 import { ViewCreditDetailsComponent } from './user/view-credit-details/view-credit-details.component';
@@ -33,6 +33,7 @@ import { LogoutComponent } from './user/logout/logout.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule
   ],
