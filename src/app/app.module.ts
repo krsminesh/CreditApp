@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ViewCreditDetailsComponent } from './user/view-credit-details/view-credit-details.component';
 import { CheckStatusComponent } from './user/check-status/check-status.component';
 import { LogoutComponent } from './user/logout/logout.component';
+import { CreditCardExpenseListComponent } from './user/credit-card-expense-list/credit-card-expense-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { LogoutComponent } from './user/logout/logout.component';
     PageTitleDirective,
     ViewCreditDetailsComponent,
     CheckStatusComponent,
-    LogoutComponent
+    LogoutComponent,
+    CreditCardExpenseListComponent
   ],
   imports: [
     BrowserModule,

@@ -48,13 +48,14 @@ export class ApplyCreditCardComponent implements OnInit{
     this.genTrackIdNumber = this.generateRandom16DigitNumber();
     if(this.applyCreditFormReactive.valid){
      this.userData = {
-        "Full Name":this.applyCreditFormReactive.get('fullName')?.value,
+        "FullName":this.applyCreditFormReactive.get('fullName')?.value,
         "Address": this.applyCreditFormReactive.get('fullAddress')?.value,
-        "Credit Score": this.applyCreditFormReactive.get('creditScore')?.value,
-        "Annual income":this.applyCreditFormReactive.get('annualIncome')?.value,
+        "CreditScore": this.applyCreditFormReactive.get('creditScore')?.value,
+        "AnnualIncome":this.applyCreditFormReactive.get('annualIncome')?.value,
         "Status":false,
         "trackingId":this.genTrackIdNumber
       }
+      console.log(this.userData);
       this.clearFormFields();
       
       this.ApiService.applyCreditAPI(this.userData).subscribe(

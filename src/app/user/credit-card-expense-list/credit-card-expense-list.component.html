@@ -1,0 +1,53 @@
+<div class="normal-user-credit-list">
+    <h2 appPageTitle>Welcome - {{currentLoginName}} !</h2>
+    <div class="mt-4 table-responsive mb-100 col-9 mx-auto">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Date</th>
+                    <th>Merchant Name</th>
+                    <th>Amount</th>
+                    <th width="15%">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of listAllExpData">
+                    <td>{{item.Date}}</td>
+                    <td>{{item.Merchant}}</td>
+                    <td>{{item.Amount}}</td>
+                    <td>
+                        <ng-container *ngIf="item.Amount>1000 && !item.rejectFlag">
+                            <ng-container *ngIf="!item.rejectFlag">
+                                <button class="btn btn-danger btn-sm" (click)="askAdminToRemove(item)">Remove Expense Request</button>
+                            </ng-container>
+                            <ng-container *ngIf="item.rejectFlag">
+                                <span class="badge badge-warning">Request Submitted</span>
+                            </ng-container>
+                        </ng-container>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<ng-container *ngIf="showExplainPopup">
+    <ng-container *ngTemplateOutlet="rejectReasonPopup"></ng-container>
+</ng-container>
+
+<ng-template #rejectReasonPopup>
+    <div class="modal-wrap">
+        <div class="modal-head">
+            <h3>Resaon for Reject Expense:</h3>
+            <h4>{{itemDate}} - price: {{itemAmount}}</h4>
+        </div>
+        <div class="modal-body px-0">
+            <textarea class="form-control" [(ngModel)]="itemReasonReject"></textarea>
+        </div>
+        <div class="modal-foot">
+            <button (click)="showExplainPopup = false" class="btn btn-teritary d-inline-flex mx-2">Cancel</button>
+            <button (click)="saveAdminRequest()" class="btn btn-primary d-inline-flex mx-2">Save Reason</button>
+        </div>
+    </div>
+    <div class="overlay-backdrop"></div>
+</ng-template>

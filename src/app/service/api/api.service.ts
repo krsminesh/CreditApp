@@ -18,9 +18,12 @@ export class ApiService {
   postApi(apiUrl:string, request:any){
     return this.httpClient.post(apiUrl, request);
   }
+  normalDeleteApi(apiURL:string){
+    return this.httpClient.delete(apiURL)
+  }
 
-  deleteAPI(apiUrl:string, request:any){
-    return this.httpClient.delete(apiUrl, request);
+  deleteAPI(request:any){
+    return this.httpClient.delete(GlobalConstants.applyCreditAPILink+"/"+request);
   }
 
   putApi(apiUrl:string, request:any){
@@ -55,5 +58,13 @@ export class ApiService {
   rejectAPI(dataRow:any, dataChangeId:any){
     console.log(dataChangeId +' --- '+dataRow)
     return this.putApi(GlobalConstants.applyCreditAPILink+'/'+dataChangeId, dataRow);
+  }
+
+  getAllCreditExpenseAPI(){
+    return this.getApi(GlobalConstants.creditExpenseAPILink)
+  }
+
+  rejectAdminRequest(data:any){
+    return this.postApi(GlobalConstants.rejectAdminAPILink, data)
   }
 }

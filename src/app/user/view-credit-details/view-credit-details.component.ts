@@ -10,6 +10,7 @@ import { SessionService } from 'src/app/service/session/session.service';
   styleUrls: ['./view-credit-details.component.scss']
 })
 export class ViewCreditDetailsComponent implements OnInit{
+  currentLoginName:any;
   isAdminPage:boolean = false;
   applications:any;
   showRejectReason: boolean = false;
@@ -31,6 +32,7 @@ export class ViewCreditDetailsComponent implements OnInit{
     if(this.SessionService.getLoginUserType() == "true"){
       this.isAdminPage = true;
     }
+    this.currentLoginName = this.SessionService.getCurrentSession()
   }
 
   fetchCreditApplyData(){
@@ -72,21 +74,33 @@ export class ViewCreditDetailsComponent implements OnInit{
         this.ApiService.addNewLoginAccount(newLoginItem).subscribe(
           (Response) =>{
             alert("upon approval, the user is added to the login users list - by this the user can login with the default password = 'Welcome123'")
+          },
+          (err)=>{
+            alert("error in adding the new usser to login list")
           }
         )
       },
       (err)=>{
-        alert("err approve")
+        alert("err approve login by admin")
       }
     );
   }
   deleteRequest(itemRow : any){
-
+    this.ApiService.deleteAPI(itemRow.id).subscribe(
+      (res:any) => {
+        alert("Deleted the request");
+        this.fetchCreditApplyData();
+      },
+      (err) => {
+        alert("delete api error")
+      }
+    );
   }
 
   saveRejectReason(){
     this.itemFieldReasonReject = this.itemReasonReject
-    this.rejectRequestWithReason(this.itemFieldReasonReject)
+    this.rejectRequestWithReason(this.itemFieldReasonReject);
+    this.showRejectReason = false;
   }
 
   rejectRequestWithReason(rReason:string){

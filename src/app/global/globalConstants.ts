@@ -10,8 +10,12 @@ export class GlobalConstants{
 
     static loginErrorMessage = "Either the entered User Name or the Passoword is wrong."
 
-    //static applyCreditAPILink = 'https://retoolapi.dev/S5vmfK/apply-credit';
+
     static applyCreditAPILink = 'https://retoolapi.dev/q2WHO6/apply-credit';
 
     static userLoginAPILink = 'https://retoolapi.dev/Cxyq9F/userLogin';
+
+    static creditExpenseAPILink ='https://retoolapi.dev/xL3WTo/credit-expenses'
+
+    static rejectAdminAPILink ='https://retoolapi.dev/FoIGzs/reject-expense'
 }
