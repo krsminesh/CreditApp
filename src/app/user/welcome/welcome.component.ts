@@ -12,4 +12,6 @@ export class WelcomeComponent {
   applyUrl = GlobalConstants.applyUrl;
   checkStatusURL = GlobalConstants.checkStatusURL;
 
+  str = "We are going to make this as a normal string"
+
 }

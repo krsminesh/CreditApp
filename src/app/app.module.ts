@@ -16,6 +16,8 @@ import { ViewCreditDetailsComponent } from './user/view-credit-details/view-cred
 import { CheckStatusComponent } from './user/check-status/check-status.component';
 import { LogoutComponent } from './user/logout/logout.component';
 import { CreditCardExpenseListComponent } from './user/credit-card-expense-list/credit-card-expense-list.component';
+import { CubicPipe } from './pipe/cubic.pipe';
+import { PowerPipe } from './pipe/power.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,8 @@ import { CreditCardExpenseListComponent } from './user/credit-card-expense-list/
     ViewCreditDetailsComponent,
     CheckStatusComponent,
     LogoutComponent,
-    CreditCardExpenseListComponent
+    CreditCardExpenseListComponent,
+    CubicPipe
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import { CreditCardExpenseListComponent } from './user/credit-card-expense-list/
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    PowerPipe
   ],
   providers: [],
   bootstrap: [AppComponent]

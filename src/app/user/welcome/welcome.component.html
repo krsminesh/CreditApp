@@ -1,5 +1,18 @@
 <div class="welcome-page">
+    
     <div class="bg-dark px-4 py-4">
+        <p>
+            {{ str | slice:2:10 }}
+        </p>
+        <p> {{5 | cubicpipe}}</p>
+
+        <p>Power custom val: {{5 | powerpipe:2}}</p>
+        
+        <p>
+            <span *ngFor="let ss of str.split(' ')">
+                {{ss}} <br>
+            </span>
+        </p>
         <div class="row">
             <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1 aos-init aos-animate" data-aos="fade-up" data-aos-delay="200">
             <h1 class="mb-4">Better Banking for your daily needs.</h1>
